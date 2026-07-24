@@ -1,0 +1,53 @@
+plugins {
+    java
+    application
+    id("org.jetbrains.kotlin.jvm") version "2.1.20"
+    id("org.javamodularity.moduleplugin") version "1.8.15"
+    id("org.openjfx.javafxplugin") version "0.1.0"
+    id("org.beryx.jlink") version "3.1.1"
+}
+
+group = "de.pcsoft.demo.ai"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+val junitVersion = "5.12.1"
+
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+application {
+    mainModule.set("de.pcsoft.demo.ai.aicalculator")
+    mainClass.set("de.pcsoft.demo.ai.aicalculator.HelloApplication")
+}
+kotlin {
+    jvmToolchain(21)
+}
+
+javafx {
+    version = "21.0.6"
+    modules = listOf("javafx.controls", "javafx.fxml")
+}
+
+dependencies {
+    implementation("org.controlsfx:controlsfx:11.2.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
+jlink {
+    imageZip.set(layout.buildDirectory.file("/distributions/app-${javafx.platform.classifier}.zip"))
+    options.set(listOf("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages"))
+    launcher {
+        name = "app"
+    }
+}
