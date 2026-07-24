@@ -1,14 +1,21 @@
 # Global Rules
 
 - All console output of the AI MUST be printed in German
-- Within the project the language is English (files)
+- The language used inside project files (identifiers, code comments, KDoc, CHANGELOG, config, commit-relevant text) MUST ALWAYS be English
+  - Exceptions:
+    - Console/runtime output shown to the user (German, see above)
+    - User-facing i18n content: resource bundles and MkDocs documentation (English as default/fallback + German)
+- NEVER run the application (e.g. `gradle run`): it opens a window and requires user interaction
+  - Use `gradle build` / `gradle test` to verify instead
 - NEVER add dependencies unasked: ask the user
 - NEVER add your own architecture decisions in code unasked: ask the user
 - NEVER add your own packages or package structures outside the ruleset unasked: ask the user
+- Project is build with Gradle
 
 # Programming
 
 - The entire project is written in Kotlin
+- The project is non-modular (no JPMS `module-info.java`); it runs on the classpath
 - Each class should be in its own file
   - An exception is a class that is explicitly intended for the other class it is contained in
 
@@ -69,6 +76,7 @@
 # Tests
 
 - A code coverage of 100% MUST be achieved
+- UI classes (View, Component, Stage, ViewModel) are EXCLUDED from the per-class testing rule and the coverage requirement, to avoid meaningless tests
 - Each test method MUST be provided with a detailed description of the test case in KDocs
 
 # AI

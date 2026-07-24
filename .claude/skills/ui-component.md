@@ -20,6 +20,9 @@ description: Structure of a UI (JavaFX) component when it is created or modified
     - This MUST ALWAYS contain the interface `Initializable`
     - This MUST ALWAYS bind the view model and the FXML (and its components)
     - The name MUST ALWAYS be `<Name>View` (like the FXML)
+    - ALL FXML component injections MUST ALWAYS be annotated with `@FXML`
+      - The injected fields/properties MUST ALWAYS be `private`
+      - FXML-bound handler functions MUST ALWAYS be `@FXML` and `private`
   - There MUST ALWAYS be a component ViewModel
     - This ALWAYS contains all necessary bindings and properties needed to process the display (I/O)
     - The name MUST ALWAYS be `<Name>ViewModel`

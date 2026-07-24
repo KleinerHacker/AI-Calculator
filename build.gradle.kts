@@ -2,9 +2,7 @@ plugins {
     java
     application
     id("org.jetbrains.kotlin.jvm") version "2.1.20"
-    id("org.javamodularity.moduleplugin") version "1.8.15"
     id("org.openjfx.javafxplugin") version "0.1.0"
-    id("org.beryx.jlink") version "3.1.1"
 }
 
 group = "de.pcsoft.demo.ai"
@@ -22,8 +20,7 @@ tasks.withType<JavaCompile> {
 }
 
 application {
-    mainModule.set("de.pcsoft.demo.ai.aicalculator")
-    mainClass.set("de.pcsoft.demo.ai.aicalculator.HelloApplication")
+    mainClass.set("de.pcsoft.demo.ai.aicalculator.AiCalculatorApplication")
 }
 kotlin {
     jvmToolchain(21)
@@ -36,18 +33,14 @@ javafx {
 
 dependencies {
     implementation("org.controlsfx:controlsfx:11.2.1")
+    implementation("de.saxsys:mvvmfx:1.8.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.testfx:testfx-core:4.0.18")
+    testImplementation("org.testfx:testfx-junit5:4.0.18")
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-jlink {
-    imageZip.set(layout.buildDirectory.file("/distributions/app-${javafx.platform.classifier}.zip"))
-    options.set(listOf("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages"))
-    launcher {
-        name = "app"
-    }
 }

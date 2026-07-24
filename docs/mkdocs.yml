@@ -1,0 +1,8 @@
+site_name: AI-Calculator
+docs_dir: docs
+
+nav:
+  - Home (EN): index.md
+  - Usage (EN): usage.md
+  - Start (DE): index.de.md
+  - Bedienung (DE): usage.de.md
