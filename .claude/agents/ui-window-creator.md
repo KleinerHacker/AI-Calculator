@@ -1,5 +1,5 @@
 ---
-name: ui-component-creator
+name: ui-window-creator
 description: Creation of a new, not yet existing UI stage (window)
 
 model: opus
