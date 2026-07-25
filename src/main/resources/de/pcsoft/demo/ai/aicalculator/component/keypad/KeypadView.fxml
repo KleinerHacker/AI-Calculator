@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="root"
-          styleClass="keypad"
-          xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="de.pcsoft.demo.ai.aicalculator.component.keypad.KeypadView">
+<fx:root type="javafx.scene.layout.GridPane"
+         styleClass="keypad"
+         xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml">
     <columnConstraints>
         <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0"/>
         <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0"/>
@@ -76,4 +75,4 @@
     <Button fx:id="digit0Button" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="3"
             styleClass="keypad-key, keypad-key-digit"
             maxWidth="Infinity" maxHeight="Infinity"/>
-</GridPane>
+</fx:root>

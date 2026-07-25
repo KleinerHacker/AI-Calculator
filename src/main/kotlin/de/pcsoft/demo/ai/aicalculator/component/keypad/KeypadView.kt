@@ -11,7 +11,6 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
-import javafx.scene.layout.GridPane
 import java.net.URL
 import java.util.ResourceBundle
 
@@ -23,10 +22,6 @@ import java.util.ResourceBundle
  * outside via the view model.
  */
 class KeypadView : FxmlView<KeypadViewModel>, Initializable {
-
-    /** Root container of the keypad, injected from the FXML file. */
-    @FXML
-    private lateinit var root: GridPane
 
     @FXML
     private lateinit var digit0Button: Button
@@ -136,15 +131,20 @@ class KeypadView : FxmlView<KeypadViewModel>, Initializable {
 
     /**
      * Registers the keyboard support as soon as the component becomes part of a scene.
+     *
+     * Since the component uses `fx:root`, no root node is injected into the code behind. The
+     * scene is therefore observed via one of the injected keys, which lives in the very same
+     * scene as the keypad itself.
      */
     private fun installKeyboardSupport() {
-        root.sceneProperty().addListener { _, oldScene, newScene ->
+        val anchor = digit0Button
+        anchor.sceneProperty().addListener { _, oldScene, newScene ->
             oldScene?.removeEventFilter(KeyEvent.KEY_PRESSED, ::handleKeyPressed)
             oldScene?.removeEventFilter(KeyEvent.KEY_TYPED, ::handleKeyTyped)
             newScene?.addEventFilter(KeyEvent.KEY_PRESSED, ::handleKeyPressed)
             newScene?.addEventFilter(KeyEvent.KEY_TYPED, ::handleKeyTyped)
         }
-        root.scene?.let { scene: Scene ->
+        anchor.scene?.let { scene: Scene ->
             scene.addEventFilter(KeyEvent.KEY_PRESSED, ::handleKeyPressed)
             scene.addEventFilter(KeyEvent.KEY_TYPED, ::handleKeyTyped)
         }

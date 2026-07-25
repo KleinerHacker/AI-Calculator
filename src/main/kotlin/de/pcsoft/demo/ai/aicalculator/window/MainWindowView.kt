@@ -1,10 +1,8 @@
 package de.pcsoft.demo.ai.aicalculator.window
 
-import de.pcsoft.demo.ai.aicalculator.component.formula.FormulaView
-import de.pcsoft.demo.ai.aicalculator.component.formula.FormulaViewModel
+import de.pcsoft.demo.ai.aicalculator.component.formula.Formula
+import de.pcsoft.demo.ai.aicalculator.component.keypad.Keypad
 import de.pcsoft.demo.ai.aicalculator.component.keypad.KeypadKey
-import de.pcsoft.demo.ai.aicalculator.component.keypad.KeypadView
-import de.saxsys.mvvmfx.FluentViewLoader
 import de.saxsys.mvvmfx.FxmlView
 import de.saxsys.mvvmfx.InjectViewModel
 import javafx.fxml.FXML
@@ -24,6 +22,14 @@ class MainWindowView : FxmlView<MainWindowViewModel>, Initializable {
     @FXML
     private lateinit var root: BorderPane
 
+    /** Formula display component, embedded and injected from the FXML file. */
+    @FXML
+    private lateinit var formula: Formula
+
+    /** Keypad component, embedded and injected from the FXML file. */
+    @FXML
+    private lateinit var keypad: Keypad
+
     /** The main window's view model injected by mvvmfx. */
     @InjectViewModel
     private lateinit var viewModel: MainWindowViewModel
@@ -31,38 +37,25 @@ class MainWindowView : FxmlView<MainWindowViewModel>, Initializable {
     /**
      * Initializes the controller after the FXML file has been loaded.
      *
-     * Loads the formula display and the keypad component programmatically, because mvvmfx does not
-     * inject a view model into views embedded via `fx:include`. Additionally wires the keypad to the
-     * formula display, so that key presses modify the displayed formula.
+     * Wires the keypad to the formula display, so that key presses modify the displayed formula.
      *
      * @param location the base URL of the FXML document or `null`.
      * @param resources the resource bundle used or `null`.
      */
     override fun initialize(location: URL?, resources: ResourceBundle?) {
-        val formula = FluentViewLoader.fxmlView(FormulaView::class.java)
-            .resourceBundle(resources)
-            .load()
-        val keypad = FluentViewLoader.fxmlView(KeypadView::class.java)
-            .resourceBundle(resources)
-            .load()
-
-        keypad.viewModel.onKey = { key -> handle(key, formula.viewModel) }
-
-        root.top = formula.view
-        root.center = keypad.view
+        keypad.onKey = { key -> handle(key) }
     }
 
     /**
      * Applies a pressed keypad key to the formula display.
      *
      * @param key the pressed keypad key.
-     * @param viewModel the view model of the formula display to modify.
      */
-    private fun handle(key: KeypadKey, viewModel: FormulaViewModel) {
+    private fun handle(key: KeypadKey) {
         when (key) {
-            KeypadKey.CLEAR -> viewModel.clear()
-            KeypadKey.EQUALS -> viewModel.recalculate()
-            else -> key.character?.let { viewModel.append(it) }
+            KeypadKey.CLEAR -> formula.clear()
+            KeypadKey.EQUALS -> formula.recalculate()
+            else -> key.character?.let { formula.append(it) }
         }
     }
 }

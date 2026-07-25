@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root"
-      styleClass="formula-display"
-      xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="de.pcsoft.demo.ai.aicalculator.component.formula.FormulaView">
+<fx:root type="javafx.scene.layout.VBox"
+         styleClass="formula-display"
+         xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml">
 
     <Label fx:id="formulaLabel"
            styleClass="formula-display-formula"
@@ -17,4 +15,4 @@
            styleClass="formula-display-result"
            alignment="CENTER_RIGHT"
            maxWidth="Infinity"/>
-</VBox>
+</fx:root>

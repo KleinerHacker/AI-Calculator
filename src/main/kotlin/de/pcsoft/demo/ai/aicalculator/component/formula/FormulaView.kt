@@ -8,7 +8,6 @@ import javafx.fxml.Initializable
 import javafx.scene.control.Label
 import javafx.scene.control.OverrunStyle
 import javafx.scene.control.Tooltip
-import javafx.scene.layout.VBox
 import java.net.URL
 import java.util.ResourceBundle
 
@@ -20,10 +19,6 @@ import java.util.ResourceBundle
  * so the end of the text always stays visible, and are fully available via tooltip.
  */
 class FormulaView : FxmlView<FormulaViewModel>, Initializable {
-
-    /** Root container of the formula display, injected from the FXML file. */
-    @FXML
-    private lateinit var root: VBox
 
     /** Label showing the current formula in small text. */
     @FXML

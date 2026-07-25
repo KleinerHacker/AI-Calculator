@@ -97,5 +97,9 @@
   - Windows (stages): `ui-window-creator`
   - Design / CSS: `ui-designer`
   - Doing such work yourself instead of delegating is a rule violation
+  - The obligation applies to NEW artifacts as well as to CHANGES of existing ones
+    (refactoring, bug fixes, restoring rule compliance)
+- Before an implementation step touching the UI, the applicable skill
+  (`ui-component`, `ui-window`) MUST be read and its final self-check MUST be reported
 - You MUST NEVER take project knowledge into your memory
 - Project scans should be avoided
