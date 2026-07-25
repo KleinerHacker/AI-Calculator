@@ -34,6 +34,7 @@ javafx {
 dependencies {
     implementation("org.controlsfx:controlsfx:11.2.1")
     implementation("de.saxsys:mvvmfx:1.8.0")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:2.1.20")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
