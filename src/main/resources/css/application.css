@@ -32,6 +32,42 @@
     -fx-padding: 16px;
 }
 
+/* ---------------------------------------------------------- formula display */
+
+/*
+ * Calculator display: a slightly recessed, blue tinted panel using the same
+ * rounded language as the keypad. Kept compact (approx. 90px total height) so
+ * the keypad keeps its room inside the fixed 300 x 500 window.
+ */
+.formula-display {
+    -fx-spacing: 2px;
+    -fx-padding: 10px 14px 10px 14px;
+    -fx-background-color: linear-gradient(to bottom, #ffffff 0%, -fx-app-blue-tint 100%);
+    -fx-background-radius: 18px;
+    -fx-border-color: -fx-app-outline;
+    -fx-border-radius: 18px;
+    -fx-border-width: 1px;
+    -fx-effect: innershadow(gaussian, rgba(10, 60, 130, 0.10), 6, 0.0, 0, 1);
+}
+
+/* Upper line: the raw formula, quiet blue and small. */
+.formula-display-formula {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-app-blue-dark;
+    -fx-opacity: 0.85;
+    -fx-min-height: 20px;
+    -fx-padding: 0 2px 0 2px;
+}
+
+/* Lower line: the result, dominant and in the orange logo accent. */
+.formula-display-result {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-app-orange-dark;
+    -fx-min-height: 40px;
+    -fx-padding: 0 2px 0 2px;
+}
+
 /* --------------------------------------------------------------------- keypad */
 
 .keypad {

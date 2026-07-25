@@ -1,9 +1,9 @@
 # AI-Calculator
 
 A small demo desktop calculator built with Kotlin and JavaFX (MVVM via mvvmfx).
-This repository currently contains the application base: a main window with the calculator
-keypad and an application icon derived from the project logo. The keys are not connected to
-the calculation logic yet.
+This repository currently contains the application base: a fixed-size main window (300 x 500)
+with the formula/result display, the calculator keypad and an application icon derived from the
+project logo. The keys are not connected to the display yet.
 
 ## Build & Run
 
@@ -26,6 +26,10 @@ On Windows you can use `gradlew.bat` instead of `./gradlew`.
 - Internationalized window title (German/English)
 - Embeddable keypad component with digits, operators, result and clear keys (icon-only)
 - Full keyboard operation of the keypad including tooltips and accessible texts (German/English)
+- Embeddable display component showing the current formula in small text and the permanently
+  calculated result in large text, with tooltips for truncated content
+- Calculation of the four basic arithmetic operations on arbitrary numbers (`BigDecimal`),
+  tolerant towards incomplete formulas
 
 ## Documentation
 

@@ -25,6 +25,8 @@ class MainWindow : Stage() {
             stylesheets.add(loadStylesheet())
         }
         icons.setAll(loadIcons())
+        isResizable = false
+        isIconified = false
     }
 
     /**

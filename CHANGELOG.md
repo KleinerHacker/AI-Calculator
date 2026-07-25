@@ -13,3 +13,9 @@ All notable, user-visible changes are documented here.
 - Keyboard operation of all keys (digits incl. numeric keypad, operators, `Enter`/`=`, `Esc`/`Del`)
 - Visual design based on the application logo: bright blue/orange colour scheme, rounded keys,
   hover and pressed feedback and colour-coded key groups (digits, operators, result, clear)
+- Display above the keypad showing the current formula in small text and the permanently
+  calculated result in large text (both are always visible, even for a corrupt formula);
+  without any input the formula line shows an example formula and the result line `0`
+- Formula and result too long for the available width are truncated at the beginning and can be
+  read in full via tooltip
+- Fixed main window size of 300 x 500 pixels; the window can no longer be resized
