@@ -21,8 +21,21 @@ verfügbare Breite zu lang, wird der Text am Anfang abgeschnitten und mit Auslas
 gekennzeichnet; der vollständige Text erscheint dann als Tooltip, wenn die Zeile mit der
 Maus überfahren wird.
 
-Das Tastenfeld ist noch nicht mit der Anzeige verbunden, daher zeigt die Anzeige derzeit
-immer den leeren Zustand.
+Die Anzeige besitzt die Formel selbst: Jeder Tastendruck übergibt ihr das nächste Zeichen, das
+sie eigenständig an die Formel anhängt.
+
+## Formel eingeben
+
+Ein Tastendruck hängt das Zeichen der Taste an die Formel an, Formel und Ergebnis werden
+sofort aktualisiert. Zwei Eingaben werden dabei während der Eingabe korrigiert:
+
+- werden mehrere Rechenoperationen (`+`, `-`, `*`, `/`) hintereinander eingegeben, zählt nur
+  die zuletzt eingegebene: aus `1+` wird mit `*` die Formel `1*`
+- werden mehrere Dezimalpunkte hintereinander eingegeben, zählt nur der zuletzt eingegebene
+
+Die Taste `C` löscht die Formel vollständig, die Taste `=` berechnet das Ergebnis der aktuellen
+Formel erneut. Da das Ergebnis ohnehin ständig angezeigt wird, dient `=` nur dazu, eine
+Neuberechnung zu erzwingen.
 
 ## Tastenfeld
 

@@ -3,7 +3,7 @@
 A small demo desktop calculator built with Kotlin and JavaFX (MVVM via mvvmfx).
 This repository currently contains the application base: a fixed-size main window (300 x 500)
 with the formula/result display, the calculator keypad and an application icon derived from the
-project logo. The keys are not connected to the display yet.
+project logo. The keys are connected to the display: every key press extends the formula.
 
 ## Build & Run
 
@@ -28,6 +28,9 @@ On Windows you can use `gradlew.bat` instead of `./gradlew`.
 - Full keyboard operation of the keypad including tooltips and accessible texts (German/English)
 - Embeddable display component showing the current formula in small text and the permanently
   calculated result in large text, with tooltips for truncated content
+- Keypad and display connected: a key press hands the display its next character, the display
+  owns and extends the formula itself
+- Several operators or decimal points entered in a row are reduced to the last entered character
 - Calculation of the four basic arithmetic operations on arbitrary numbers (`BigDecimal`),
   tolerant towards incomplete formulas
 

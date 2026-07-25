@@ -7,13 +7,20 @@ import java.util.ResourceBundle
 /**
  * View model of the [KeypadView] component.
  *
- * Provides the descriptive texts of all keypad keys. All texts are obtained
- * exclusively from the resource bundle.
+ * Provides the descriptive texts of all keypad keys and reports every key press to the outside
+ * via [onKey]. All texts are obtained exclusively from the resource bundle.
  */
 class KeypadViewModel : ViewModel {
 
     @InjectResourceBundle
     private lateinit var resources: ResourceBundle
+
+    /**
+     * Callback invoked on every key press.
+     *
+     * It is set from outside by the embedding component. By default nothing happens.
+     */
+    var onKey: (KeypadKey) -> Unit = {}
 
     /**
      * Returns the localized description of the given key.

@@ -8,7 +8,12 @@ All notable, user-visible changes are documented here.
 - Application and window icon derived from the project logo (16/24/32/48/64 px)
 - German/English window title (i18n)
 - Keypad in the main window with digits 0-9, the operators `+`, `-`, `*`, `/`, the result key `=`
-  and the clear key `C` (icon-only keys, no calculation yet)
+  and the clear key `C` (icon-only keys)
+- Keypad and display are connected: every key press appends its character to the formula, and
+  formula and result are updated immediately
+- Entering several operators in a row keeps only the last entered operator (`1+` plus `*`
+  becomes `1*`), the same applies to several decimal points in a row
+- The `C` key clears the formula, the `=` key recalculates the result of the current formula
 - Tooltips and accessible texts for all keys in German and English
 - Keyboard operation of all keys (digits incl. numeric keypad, operators, `Enter`/`=`, `Esc`/`Del`)
 - Visual design based on the application logo: bright blue/orange colour scheme, rounded keys,

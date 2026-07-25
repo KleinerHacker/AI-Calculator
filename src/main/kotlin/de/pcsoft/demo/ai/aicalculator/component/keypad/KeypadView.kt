@@ -19,8 +19,8 @@ import java.util.ResourceBundle
  * Controller ("code behind") of the standalone and embeddable keypad component.
  *
  * Renders all calculator keys (digits, operators, result and clear) as icon-only buttons and
- * additionally makes them available via the physical keyboard. The keys have no calculation
- * logic attached yet.
+ * additionally makes them available via the physical keyboard. Every key press is reported to the
+ * outside via the view model.
  */
 class KeypadView : FxmlView<KeypadViewModel>, Initializable {
 
@@ -114,7 +114,8 @@ class KeypadView : FxmlView<KeypadViewModel>, Initializable {
     }
 
     /**
-     * Applies icon, tooltip and accessible text to the button of the given key.
+     * Applies icon, tooltip and accessible text to the button of the given key and reports its
+     * activation to the view model.
      *
      * @param key the key represented by the button.
      * @param button the button to decorate.
@@ -130,6 +131,7 @@ class KeypadView : FxmlView<KeypadViewModel>, Initializable {
         button.tooltip = Tooltip(description)
         button.accessibleText = description
         button.isFocusTraversable = false
+        button.setOnAction { viewModel.onKey(key) }
     }
 
     /**

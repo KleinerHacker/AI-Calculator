@@ -19,8 +19,21 @@ The display never grows beyond the window. If a formula or result is too long fo
 available width, it is truncated at the beginning and marked with an ellipsis; the complete
 text is then shown as a tooltip when hovering the line.
 
-The keypad is not connected to the display yet, so at the moment the display always shows
-the empty state.
+The display owns the formula: every key press hands it the next character, which it appends to
+the formula on its own.
+
+## Entering a formula
+
+Pressing a key appends its character to the formula, and formula and result are updated
+immediately. Two entries are corrected while typing:
+
+- if several operators (`+`, `-`, `*`, `/`) are entered in a row, only the last one counts:
+  `1+` followed by `*` becomes `1*`
+- if several decimal points are entered in a row, only the last one counts
+
+The `C` key clears the formula completely, the `=` key recalculates the result of the current
+formula. Since the result is displayed at all times anyway, `=` is only needed to force a
+recalculation.
 
 ## Keypad
 

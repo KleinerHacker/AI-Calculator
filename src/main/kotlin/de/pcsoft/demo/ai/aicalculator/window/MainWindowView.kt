@@ -1,6 +1,8 @@
 package de.pcsoft.demo.ai.aicalculator.window
 
 import de.pcsoft.demo.ai.aicalculator.component.formula.FormulaView
+import de.pcsoft.demo.ai.aicalculator.component.formula.FormulaViewModel
+import de.pcsoft.demo.ai.aicalculator.component.keypad.KeypadKey
 import de.pcsoft.demo.ai.aicalculator.component.keypad.KeypadView
 import de.saxsys.mvvmfx.FluentViewLoader
 import de.saxsys.mvvmfx.FxmlView
@@ -30,7 +32,8 @@ class MainWindowView : FxmlView<MainWindowViewModel>, Initializable {
      * Initializes the controller after the FXML file has been loaded.
      *
      * Loads the formula display and the keypad component programmatically, because mvvmfx does not
-     * inject a view model into views embedded via `fx:include`.
+     * inject a view model into views embedded via `fx:include`. Additionally wires the keypad to the
+     * formula display, so that key presses modify the displayed formula.
      *
      * @param location the base URL of the FXML document or `null`.
      * @param resources the resource bundle used or `null`.
@@ -43,7 +46,23 @@ class MainWindowView : FxmlView<MainWindowViewModel>, Initializable {
             .resourceBundle(resources)
             .load()
 
+        keypad.viewModel.onKey = { key -> handle(key, formula.viewModel) }
+
         root.top = formula.view
         root.center = keypad.view
+    }
+
+    /**
+     * Applies a pressed keypad key to the formula display.
+     *
+     * @param key the pressed keypad key.
+     * @param viewModel the view model of the formula display to modify.
+     */
+    private fun handle(key: KeypadKey, viewModel: FormulaViewModel) {
+        when (key) {
+            KeypadKey.CLEAR -> viewModel.clear()
+            KeypadKey.EQUALS -> viewModel.recalculate()
+            else -> key.character?.let { viewModel.append(it) }
+        }
     }
 }
