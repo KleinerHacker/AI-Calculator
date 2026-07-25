@@ -1,6 +1,6 @@
 ---
 name: ui-designer
-description: Creation or modification of the UI design regarding color, styling, everything related to CSS
+description: MUST BE USED PROACTIVELY for the UI design - color, styling, shapes, spacing, everything related to CSS. Trigger after ANY change to the UI (new or modified window, component or icon) so the design stays consistent with the application logo. NEVER write or change CSS or inline styling yourself; ALWAYS delegate to this agent.
 
 model: opus
 effort: low

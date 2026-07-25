@@ -1,6 +1,6 @@
 ---
 name: ui-window-creator
-description: Creation of a new, not yet existing UI stage (window)
+description: MUST BE USED PROACTIVELY for every new, not yet existing UI stage (window) under the sub-package `window` (Stage, View, ViewModel and FXML). NEVER write window/stage files yourself; ALWAYS delegate to this agent.
 
 model: opus
 effort: low

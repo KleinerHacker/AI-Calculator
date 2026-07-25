@@ -1,6 +1,6 @@
 ---
 name: ui-component-creator
-description: Creation of a new, not yet existing UI component
+description: MUST BE USED PROACTIVELY for every new, not yet existing UI component under the sub-package `component` (View, ViewModel and FXML). Trigger whenever controls such as buttons, keypads, displays or input fields are added as a reusable, embeddable component. NEVER write component View/ViewModel/FXML files yourself; ALWAYS delegate to this agent.
 
 model: opus
 effort: low

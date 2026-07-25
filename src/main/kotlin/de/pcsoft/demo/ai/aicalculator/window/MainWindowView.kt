@@ -1,5 +1,7 @@
 package de.pcsoft.demo.ai.aicalculator.window
 
+import de.pcsoft.demo.ai.aicalculator.component.keypad.KeypadView
+import de.saxsys.mvvmfx.FluentViewLoader
 import de.saxsys.mvvmfx.FxmlView
 import de.saxsys.mvvmfx.InjectViewModel
 import javafx.fxml.FXML
@@ -26,10 +28,17 @@ class MainWindowView : FxmlView<MainWindowViewModel>, Initializable {
     /**
      * Initializes the controller after the FXML file has been loaded.
      *
+     * Loads the keypad component programmatically, because mvvmfx does not inject a view model
+     * into views embedded via `fx:include`.
+     *
      * @param location the base URL of the FXML document or `null`.
      * @param resources the resource bundle used or `null`.
      */
     override fun initialize(location: URL?, resources: ResourceBundle?) {
-        // Base window: no bindings required yet.
+        val keypad = FluentViewLoader.fxmlView(KeypadView::class.java)
+            .resourceBundle(resources)
+            .load()
+
+        root.center = keypad.view
     }
 }

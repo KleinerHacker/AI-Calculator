@@ -79,8 +79,23 @@
 - UI classes (View, Component, Stage, ViewModel) are EXCLUDED from the per-class testing rule and the coverage requirement, to avoid meaningless tests
 - Each test method MUST be provided with a detailed description of the test case in KDocs
 
+## Execution
+
+- After EVERY code change the tests MUST be executed explicitly via `gradle test`
+  - `gradle build` alone is NOT sufficient as proof: the test run MUST be visible as a separate step
+  - Delegating the change to an agent does NOT remove this obligation
+- The test result MUST be reported to the user (number of executed tests, successes, failures)
+- Failing tests MUST be fixed before the work is reported as finished
+  - A change MUST NEVER be reported as finished while tests are failing or were not executed
+
 # AI
 
 - You MUST NEVER change files under `.claude` on your own, unless the user has allowed it
+- The agents under `.claude/agents` MUST ALWAYS be used for the tasks they describe
+  - Icons: `ui-icon-creator`
+  - Components: `ui-component-creator`
+  - Windows (stages): `ui-window-creator`
+  - Design / CSS: `ui-designer`
+  - Doing such work yourself instead of delegating is a rule violation
 - You MUST NEVER take project knowledge into your memory
 - Project scans should be avoided

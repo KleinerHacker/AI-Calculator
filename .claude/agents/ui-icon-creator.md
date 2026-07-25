@@ -1,6 +1,6 @@
 ---
 name: ui-icon-creator
-description: Creation of a new icon for the UI
+description: MUST BE USED PROACTIVELY for every new or changed icon of the UI. Trigger whenever a task needs an icon that does not exist yet - button icons, window icons, status icons, any PNG under `src/main/resources/icons`. NEVER create, draw, generate or script icon files yourself; ALWAYS delegate to this agent, even for a single icon or a whole icon set.
 
 model: opus
 effort: low

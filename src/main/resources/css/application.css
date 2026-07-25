@@ -1,0 +1,142 @@
+/*
+ * Application stylesheet.
+ *
+ * The design follows the application logo: a rounded, friendly shape in a bright blue
+ * gradient with white glyphs and an orange accent used for the result ("=").
+ */
+
+.root {
+
+    /* Palette derived from the application logo. */
+    -fx-app-blue: #2489ff;
+    -fx-app-blue-light: #4da3ff;
+    -fx-app-blue-dark: #0a6ae0;
+    -fx-app-blue-tint: #e6f0ff;
+    -fx-app-blue-tint-strong: #cfe3ff;
+    -fx-app-orange: #f5a623;
+    -fx-app-orange-dark: #e08c00;
+    -fx-app-orange-tint: #fff2da;
+    -fx-app-orange-tint-strong: #ffe4b3;
+    -fx-app-surface: #ffffff;
+    -fx-app-neutral: #eef3fa;
+    -fx-app-neutral-strong: #dde6f2;
+    -fx-app-outline: #c3d7f2;
+
+    -fx-font-family: "Segoe UI", "Noto Sans", sans-serif;
+    -fx-background-color: linear-gradient(to bottom right, #ffffff 0%, #eaf2ff 100%);
+}
+
+/* ---------------------------------------------------------------- main window */
+
+.main-window {
+    -fx-padding: 16px;
+}
+
+/* --------------------------------------------------------------------- keypad */
+
+.keypad {
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+    -fx-padding: 12px;
+    -fx-background-color: rgba(255, 255, 255, 0.65);
+    -fx-background-radius: 22px;
+    -fx-border-color: rgba(36, 137, 255, 0.18);
+    -fx-border-radius: 22px;
+    -fx-border-width: 1px;
+}
+
+/* ----------------------------------------------------------------- keypad keys */
+
+.keypad-key {
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-border-width: 1.5px;
+    -fx-padding: 6px;
+    -fx-cursor: hand;
+    -fx-min-width: 52px;
+    -fx-min-height: 52px;
+    -fx-effect: dropshadow(gaussian, rgba(10, 60, 130, 0.14), 6, 0.0, 0, 2);
+}
+
+.keypad-key:hover {
+    -fx-effect: dropshadow(gaussian, rgba(10, 60, 130, 0.24), 9, 0.0, 0, 3);
+}
+
+.keypad-key:pressed {
+    -fx-effect: innershadow(gaussian, rgba(10, 60, 130, 0.22), 6, 0.0, 0, 1);
+    -fx-translate-y: 1px;
+}
+
+/* Digit keys: bright, neutral surface so the blue icon tiles stand out. */
+.keypad-key-digit {
+    -fx-background-color: -fx-app-surface;
+    -fx-border-color: -fx-app-outline;
+}
+
+.keypad-key-digit:hover {
+    -fx-background-color: -fx-app-blue-tint;
+    -fx-border-color: -fx-app-blue-light;
+}
+
+.keypad-key-digit:pressed {
+    -fx-background-color: -fx-app-blue-tint-strong;
+    -fx-border-color: -fx-app-blue;
+}
+
+/* Operator keys: blue tinted surface matching the logo body. */
+.keypad-key-operator {
+    -fx-background-color: -fx-app-blue-tint;
+    -fx-border-color: -fx-app-blue-light;
+}
+
+.keypad-key-operator:hover {
+    -fx-background-color: -fx-app-blue-tint-strong;
+    -fx-border-color: -fx-app-blue;
+}
+
+.keypad-key-operator:pressed {
+    -fx-background-color: #b9d6ff;
+    -fx-border-color: -fx-app-blue-dark;
+}
+
+/* Result key: orange accent, exactly like the "=" glyph inside the logo. */
+.keypad-key-equals {
+    -fx-background-color: -fx-app-orange-tint;
+    -fx-border-color: -fx-app-orange;
+}
+
+.keypad-key-equals:hover {
+    -fx-background-color: -fx-app-orange-tint-strong;
+    -fx-border-color: -fx-app-orange-dark;
+}
+
+.keypad-key-equals:pressed {
+    -fx-background-color: #ffd68f;
+    -fx-border-color: -fx-app-orange-dark;
+}
+
+/* Clear key: quiet, neutral action so it never competes with the result key. */
+.keypad-key-clear {
+    -fx-background-color: -fx-app-neutral;
+    -fx-border-color: -fx-app-neutral-strong;
+}
+
+.keypad-key-clear:hover {
+    -fx-background-color: -fx-app-neutral-strong;
+    -fx-border-color: -fx-app-outline;
+}
+
+.keypad-key-clear:pressed {
+    -fx-background-color: #ccd8e8;
+    -fx-border-color: -fx-app-outline;
+}
+
+/* ------------------------------------------------------------------- tooltips */
+
+.tooltip {
+    -fx-background-color: -fx-app-blue-dark;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 6px 10px 6px 10px;
+}

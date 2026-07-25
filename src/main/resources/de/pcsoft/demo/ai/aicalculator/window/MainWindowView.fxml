@@ -6,5 +6,6 @@
             xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="de.pcsoft.demo.ai.aicalculator.window.MainWindowView"
+            styleClass="main-window"
             prefWidth="480.0" prefHeight="360.0">
 </BorderPane>

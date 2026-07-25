@@ -21,8 +21,22 @@ class MainWindow : Stage() {
             .load()
 
         titleProperty().bind(viewTuple.viewModel.titleProperty())
-        scene = Scene(viewTuple.view)
+        scene = Scene(viewTuple.view).apply {
+            stylesheets.add(loadStylesheet())
+        }
         icons.setAll(loadIcons())
+    }
+
+    /**
+     * Resolves the application stylesheet from the resources.
+     *
+     * @return the external form of the stylesheet URL.
+     */
+    private fun loadStylesheet(): String {
+        val resource = requireNotNull(javaClass.getResource("/$STYLESHEET")) {
+            "Stylesheet resource /$STYLESHEET was not found"
+        }
+        return resource.toExternalForm()
     }
 
     /**
@@ -42,6 +56,9 @@ class MainWindow : Stage() {
 
         /** Base path of the i18n resource bundle. */
         const val MESSAGES_BUNDLE = "messages"
+
+        /** Resource path of the application stylesheet. */
+        const val STYLESHEET = "css/application.css"
 
         /** Resource base path of the application icon without resolution and extension. */
         const val ICON_BASE = "icons/app"
